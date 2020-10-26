@@ -12,13 +12,16 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private TextView itemText;
+
+
+    private RecyclerView mRecyclerView2;
+    private Adapter mAdapter2;
+    private RecyclerView.LayoutManager mLayoutManager2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        itemText = findViewById(R.id.tvItemText);
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -35,8 +38,18 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.setOnItemFocusListener(new Adapter.OnItemFocusListener() {
             @Override
             public void onItemFocus(int position) {
-                itemText.setText(Integer.toString(position) + "Ermin");
+
             }
         });
+
+        mRecyclerView2 = findViewById(R.id.rv2);
+        mRecyclerView2.setHasFixedSize(true);
+        mLayoutManager2 = new LinearLayoutManager(this);
+        mAdapter2 = new Adapter(this);
+
+        mRecyclerView2.setLayoutManager(mLayoutManager2);
+        mRecyclerView2.setAdapter(mAdapter2);
+
+
     }
 }
